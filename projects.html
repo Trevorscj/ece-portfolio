@@ -53,7 +53,13 @@
             </div>
             
             <p>If any single channel tracking metric dropped past our defined safety bounds, the node published immediate deceleration commands to clear risks. We coupled this with a reactive gap-following routine that applied disparity field extensions and safety indexing bubbles, allowing the vehicle to negotiate narrow corridors and map local escape routes without hitting structures.</p>
-
+            <div class="project-video-box">
+                <video controls width="100%">
+                    <source src="assets/amr-gap-following.mp4" type="video/mp4">
+                    Your web browser does not support the HTML5 video tag.
+                </video>
+                <div class="img-caption">Video 1: Physical Autonomous Vehicle executing Reactive Gap-Following and Obstacle Abatement.</div>
+            </div>
             <h4>II. Probabilistic Localization & Motion Stability</h4>
             <p>To overcome real-world tracking noise, our team set up a structural Monte Carlo Particle Filter localization engine. The node maintained an array of hypothetical poses across the environment, tracking lidar scans real-time against an occupancy grid. By tuning sensor weights and probabilistic motion calculations, the car estimated positions within a 3-4 pixel margin of ground truth tracking. We tied this position feedback into proportional-derivative (PD), Pure Pursuit, and Stanley control models, empirically tuning system gains ($K_p$, $K_d$) to resolve transient steering oscillations and achieve smooth path tracking.</p>
 
