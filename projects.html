@@ -9,7 +9,6 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/dist/solid.js"></script>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">Trevor Johnson</div>
@@ -22,37 +21,39 @@
             </div>
         </nav>
     </header>
-
     <main class="content-container">
         <h2>Engineering Project Hub</h2>
-        <p class="intro-p">A log tracking the steady improvement and structural evolution of my hardware and software engineering systems design.</p>
-
+        <p class="intro-p">A log tracking the evolution of my hardware and software engineering projects.</p>
+        
         <section class="project-card">
             <h3>1. Chip Scale Power & Energy Instrumentation (VIP Consortium)</h3>
-            <div class="project-meta">Role: PCB Desighn Lead | Fall 2022</div>
-            <p>Sponsored by NASA-JPL, Duracell, and SOCOM, this consortium focuses on creating and characterizing in operando chip-scale electrochemical double layer (ECDL) supercapacitors. These storage architectures feature a functionalized pseudocapacitive structure coupled with a tailored ionic-liquid electrolyte embedded within a silicon wafer to power high-altitude telemetry sensors and mini IoT tracking devices.</p>
-            <p>My core contribution involved designing and tracking a custom printed circuit board (PCB) testing framework to capture and log supercapacitor performance curves targeted for orbital CubeSat platforms. Because orbital space hardware faces extreme ambient testing profiles, my routing demanded exact pad placement, trace impedance mitigation, and modular environmental isolation. The resulting instrumentation board housed real-time temperature monitoring, digital barometric altitude logging, and high-frequency capacitor discharge logging. Additionally, I built an automated hardware-level switch-over relay circuit that continuously watched the system health metrics and instantly moved load demands to a conventional power backup source if any voltage drops or current anomalies occurred, safeguarding active testing data framework.</p>
+            <div class="project-meta">Role: PCB Design Lead | Fall 2022</div>
+            <p>Sponsored by NASA-JPL, Duracell, and SOCOM, this consortium focuses on creating and characterizing in operando chip-scale electrochemical double layer (ECDL) supercapacitors. The core idea here is to move away from bulky traditional battery packs and instead utilize a functionalized pseudocapacitive structure coupled with a tailored ionic-liquid electrolyte. All of this is embedded directly within a silicon wafer. The ultimate goal? Powering high-altitude telemetry sensors and mini IoT tracking devices for orbital CubeSat platforms where space and weight are absolute premiums.</p>
+            <p>As the PCB Design Lead during the Fall 2022 phase, my main contribution revolved around building the nervous system for our testing setup. I designed and tracked a custom printed circuit board (PCB) testing framework meant to capture and log the performance curves of these experimental supercapacitors under intense conditions. Orbital space hardware faces extreme ambient testing profiles—wild temperature swings, vacuum conditions, and high-vibration environments. Because of this, my routing demanded meticulous attention to detail. I had to focus on exact pad placement, trace impedance mitigation to prevent signal reflection, and modular environmental isolation so our sensors wouldn't fry.</p>
+            <p>To achieve the exact trace impedance required for the high-frequency discharge logging, I spent weeks dialing in the dielectric constants and copper weights in my CAD software. We utilized a 4-layer stackup to ensure solid ground planes, which drastically cut down on electromagnetic interference (EMI) between our analog sensor inputs and the digital logic side. Managing the thermal profile was another massive hurdle. Supercapacitors can dump current incredibly fast, generating highly localized heat. I designed custom thermal relief pads and utilized strategic via stitching to pull that heat away from the sensitive data-logging ICs and distribute it evenly across the board's massive ground plane.</p>
+            <p>The resulting instrumentation board was packed. It housed real-time temperature monitoring, digital barometric altitude logging, and high-frequency capacitor discharge logging arrays. But the piece of this project I’m most proud of is the automated failover relay. When you are testing experimental hardware, failure isn't just an option; it's practically guaranteed. I built an automated hardware-level switch-over relay circuit that acted as a continuous watchdog. It monitored the system's health metrics in real-time. If it detected any voltage drops below our threshold or any current anomalies, it instantly shifted the load demands over to a conventional power backup source. This failover logic ensured that even if the supercapacitor catastrophically failed inside the thermal vacuum chamber, our active testing data was completely safeguarded.</p>
             <div class="project-visualization-box">
                 <img src="assets/vip-block-diagram.png" alt="High-level architecture block diagram outlining the solar telemetry input, carbon nanotube capacitors, sensor logging array, and backup relay system">
                 <div class="img-caption">Systems Architecture Diagram: Supercapacitor CubeSat Performance Logging & Failover Logic Network.</div>
             </div>
         </section>
-
+        
         <hr class="section-divider">
-
+        
         <section class="project-card">
             <h3>2. Autonomous Mobile Robotics (AMR) Navigation Stack</h3>
             <div class="project-meta">Focus: Multi-Layer Autonomy, Path-Planning Optimization, & Control Loops | Spring 2026</div>
-            <p>This development track summarizes the engineering, deployment, and optimization of a complete navigation, localization, and motion control architecture for a physical autonomous vehicle navigating dynamic configuration spaces framework.</p>
+            <p>This development track summarizes the engineering, deployment, and optimization of a complete navigation, localization, and motion control architecture for a physical autonomous vehicle navigating dynamic environments. We essentially built a self-driving stack from the ground up, moving from low-level motor control all the way up to probabilistic path planning.</p>
             
             <h4>I. Reactive Autonomy & Collision Abatement</h4>
-            <p>Initial efforts centered around low-level safety scripting utilizing a YDLIDAR X4 Pro system. I contributed to an automatic braking mechanism that dynamically computed a Time-to-Collision (TTC) profile across individual laser tracking channels. The system evaluated the scalar forward component of vehicular velocity projected onto the vector of each distinct sensor scan ray using the following dynamic formula:</p>
+            <p>Our initial efforts centered around keeping the vehicle from destroying itself during testing. We utilized a YDLIDAR X4 Pro system for 2D environmental mapping. I contributed to an automatic braking mechanism that dynamically computed a Time-to-Collision (TTC) profile across individual laser tracking channels. The system evaluated the scalar forward component of vehicular velocity projected onto the vector of each distinct sensor scan ray using a custom dynamic formula:</p>
             
             <div class="equation-box">
-                $$TTC = \frac{x}{v \cdot \cos(\theta)}$$ 
+                $$TTC = \frac{x}{v \cdot \cos(\theta)}$$
             </div>
             
-            <p>If any single channel tracking metric dropped past our defined safety bounds, the node published immediate deceleration commands to clear risks. We coupled this with a reactive gap-following routine that applied disparity field extensions and safety indexing bubbles, allowing the vehicle to negotiate narrow corridors and map local escape routes without hitting structures.</p>
+            <p>If any single channel tracking metric dropped past our defined safety bounds, the node published immediate deceleration commands to clear risks. But stopping isn't enough; the car needs to navigate. We coupled the braking with a reactive gap-following routine. This algorithm applied disparity field extensions to essentially 'inflate' obstacles in the car's mind, creating safety indexing bubbles. This allowed the vehicle to dynamically negotiate narrow corridors, evaluate the deepest gaps in its field of view, and map local escape routes without scraping against walls.</p>
+            
             <div class="project-video-box">
                 <video controls width="100%">
                     <source src="assets/amr-gap-following.mp4" type="video/mp4">
@@ -60,11 +61,14 @@
                 </video>
                 <div class="img-caption">Video 1: Physical Autonomous Vehicle executing Reactive Gap-Following and Obstacle Abatement.</div>
             </div>
+            
             <h4>II. Probabilistic Localization & Motion Stability</h4>
-            <p>To overcome real-world tracking noise, our team set up a structural Monte Carlo Particle Filter localization engine. The node maintained an array of hypothetical poses across the environment, tracking lidar scans real-time against an occupancy grid. By tuning sensor weights and probabilistic motion calculations, the car estimated positions within a 3-4 pixel margin of ground truth tracking. We tied this position feedback into proportional-derivative (PD), Pure Pursuit, and Stanley control models, empirically tuning system gains ($K_p$, $K_d$) to resolve transient steering oscillations and achieve smooth path tracking.</p>
-
+            <p>Wheel odometry is notoriously unreliable in the real world due to wheel slip and mechanical slop. To overcome this tracking noise, our team set up a structural Monte Carlo Particle Filter (MCPF) localization engine. The node maintained an array of hypothetical poses (particles) across the environment, scoring them in real-time against our pre-mapped occupancy grid using the live LiDAR scans.</p>
+            <p>Tuning this was an intense exercise in balancing computational load with accuracy. By fine-tuning the sensor weights and probabilistic motion calculations, the car could confidently estimate its position within a 3-4 pixel margin of ground truth. Once we knew exactly where the car was, we tied this position feedback into our control models. I spent days empirically tuning system gains across proportional-derivative (PD), Pure Pursuit, and Stanley control models. Dialing in the derivative gain ($K_d$) was absolutely crucial to resolve transient steering oscillations—often called 'fishtailing'—allowing the vehicle to achieve remarkably smooth and aggressive path tracking.</p>
+            
             <h4>III. Path Planning Extensions</h4>
-            <p>The top layer involved calculating trajectories across discrete and continuous spaces using $A^*$ search and Rapidly Exploring Random Trees (RRT) algorithms. While grid-based $A^*$ yielded consistent trajectories, baseline continuous-space RRT suffered from erratic path selection due to its probabilistic random sampling patterns. To stabilize convergence rates on physical hardware, I built a real-time ray-casting check into the code loop. The algorithm evaluated straight-line visibility options between newly appended branches and the absolute goal position. If the trajectory path was unobstructed by map obstacles, the system bypassed further randomized branching, drawing a line straight to the target and closing the path. This optimization dramatically minimized runtime and slashed erratic steering behavior.</p>
+            <p>The top layer of our stack involved calculating trajectories across discrete and continuous spaces. We experimented heavily with $A^*$ search and Rapidly Exploring Random Trees (RRT) algorithms. While our grid-based $A^*$ yielded consistent trajectories, baseline continuous-space RRT suffered from erratic path selection due to its randomized sampling.</p>
+            <p>To stabilize convergence rates on physical hardware, I built a real-time ray-casting check into the code loop. The algorithm evaluated straight-line visibility options between newly appended branches and the absolute goal position. If the trajectory path was unobstructed by map obstacles, the system bypassed further randomized branching, drawing a line straight to the target and terminating the search. This optimization was a game-changer. It dramatically minimized our computational runtime and completely slashed the erratic, jittery steering behavior that standard RRT usually produces on physical steering servos. The final integrated stack proved highly robust, successfully navigating a maze of dynamic obstacles at speed.</p>
             
             <div class="project-visualization-gallery">
                 <div class="gallery-card">
@@ -78,10 +82,8 @@
             </div>
         </section>
     </main>
-
     <footer>
         <p>Trevor Johnson &copy; 2026 | Georgia Tech ECE 1100 ePortfolio</p>
     </footer>
-
 </body>
 </html>
