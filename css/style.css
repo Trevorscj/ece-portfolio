@@ -324,7 +324,50 @@ footer {
     font-size: 0.85rem;
     color: #94a3b8;
 }
+/* Biography Grid Structural Architecture */
+.bio-grid {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+.bio-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.bio-image-box {
+    flex: 1;
+    min-width: 260px;
+    max-width: 340px;
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.bio-image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Project Video Block Container */
+.project-video-box {
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 1.5rem 0 2.5rem 0;
+    max-width: 100%;
+}
+
+.project-video-box video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 /* Automated Media Queries for Full Mobile Fluidity & Scaling  */
 @media (max-width: 768px) {
     nav {
