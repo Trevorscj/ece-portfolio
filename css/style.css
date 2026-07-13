@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-/* Scannable Header Navigation Bar  */
+/* Scannable Header Navigation Bar */
 header {
     background-color: #1a252f;
     padding: 1rem 5%;
@@ -108,7 +108,7 @@ nav {
     color: #1a252f;
 }
 
-/* Content Layout Containers  */
+/* Content Layout Containers */
 .content-container {
     max-width: 1100px;
     margin: 3rem auto;
@@ -169,7 +169,7 @@ li {
     font-size: 1.05rem;
 }
 
-/* Portfolio & Astrophotography Grid Modules  */
+/* Portfolio & Astrophotography Grid Modules */
 .astrophotography-gallery, .project-visualization-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -204,7 +204,7 @@ li {
     object-fit: contain;
     background-color: #1a252f; /* Dark background to match native RViz and terminal window geometry */
     display: block;
-    transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out; 
 }
 
 /* Hover expansion rule to fully expose high-resolution tracking details without layout clipping */
@@ -286,7 +286,7 @@ li {
     margin-bottom: 0.75rem;
 }
 
-/* Resume Framework & Objects Layout Portal  */
+/* Resume Framework & Objects Layout Portal */
 .resume-header {
     display: flex;
     justify-content: space-between;
@@ -316,7 +316,7 @@ li {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* Footer Section Parameters  */
+/* Footer Section Parameters */
 footer {
     background-color: #1a252f;
     color: #cbd5e1;
@@ -388,26 +388,22 @@ footer {
     height: auto;
 }
 
-/* Automated Media Queries for Full Mobile Fluidity & Scaling  */
+/* Automated Media Queries for Full Mobile Fluidity & Scaling */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
         gap: 1rem;
     }
-
     .nav-links a {
         margin: 0 0.75rem;
     }
-
     .hero-content h1 {
         font-size: 2.2rem;
     }
-
     .resume-header {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .content-container {
         margin: 1.5rem auto;
     }
