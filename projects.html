@@ -29,9 +29,9 @@
 
         <section class="project-card">
             <h3>1. Chip Scale Power & Energy Instrumentation (VIP Consortium)</h3>
-            <div class="project-meta">Role: Wireless Instrumentation Project Lead | Fall 2022 - Spring 2023 [cite: 109]</div>
-            <p>Sponsored by NASA-JPL, Duracell, and SOCOM, this consortium focuses on creating and characterizing in operando chip-scale electrochemical double layer (ECDL) supercapacitors[cite: 208, 239, 249]. These storage architectures feature a functionalized pseudocapacitive structure coupled with a tailored ionic-liquid electrolyte embedded within a silicon wafer to power high-altitude telemetry sensors and mini IoT tracking devices[cite: 249, 250, 251].</p>
-            <p>My core contribution involved designing and tracking a custom printed circuit board (PCB) testing framework to capture and log supercapacitor performance curves targeted for orbital CubeSat platforms[cite: 109]. Because orbital space hardware faces extreme ambient testing profiles, my routing demanded exact pad placement, trace impedance mitigation, and modular environmental isolation. The resulting instrumentation board housed real-time temperature monitoring, digital barometric altitude logging, and high-frequency capacitor discharge logging. Additionally, I built an automated hardware-level switch-over relay circuit that continuously watched the system health metrics and instantly moved load demands to a conventional power backup source if any voltage drops or current anomalies occurred, safeguarding active testing data framework.</p>
+            <div class="project-meta">Role: Wireless Instrumentation Project Lead | Fall 2022 - Spring 2023</div>
+            <p>Sponsored by NASA-JPL, Duracell, and SOCOM, this consortium focuses on creating and characterizing in operando chip-scale electrochemical double layer (ECDL) supercapacitors. These storage architectures feature a functionalized pseudocapacitive structure coupled with a tailored ionic-liquid electrolyte embedded within a silicon wafer to power high-altitude telemetry sensors and mini IoT tracking devices.</p>
+            <p>My core contribution involved designing and tracking a custom printed circuit board (PCB) testing framework to capture and log supercapacitor performance curves targeted for orbital CubeSat platforms. Because orbital space hardware faces extreme ambient testing profiles, my routing demanded exact pad placement, trace impedance mitigation, and modular environmental isolation. The resulting instrumentation board housed real-time temperature monitoring, digital barometric altitude logging, and high-frequency capacitor discharge logging. Additionally, I built an automated hardware-level switch-over relay circuit that continuously watched the system health metrics and instantly moved load demands to a conventional power backup source if any voltage drops or current anomalies occurred, safeguarding active testing data framework.</p>
             <div class="project-visualization-box">
                 <img src="assets/vip-block-diagram.png" alt="High-level architecture block diagram outlining the solar telemetry input, carbon nanotube capacitors, sensor logging array, and backup relay system">
                 <div class="img-caption">Systems Architecture Diagram: Supercapacitor CubeSat Performance Logging & Failover Logic Network.</div>
@@ -42,39 +42,39 @@
 
         <section class="project-card">
             <h3>2. Autonomous Mobile Robotics (AMR) Navigation Stack</h3>
-            <div class="project-meta">Focus: Multi-Layer Autonomy, Path-Planning Optimization, & Control Loops | Spring 2026 [cite: 306]</div>
-            <p>This development track summarizes the engineering, deployment, and optimization of a complete navigation, localization, and motion control architecture for a physical autonomous vehicle navigating dynamic configuration spaces framework[cite: 315].</p>
+            <div class="project-meta">Focus: Multi-Layer Autonomy, Path-Planning Optimization, & Control Loops | Spring 2026</div>
+            <p>This development track summarizes the engineering, deployment, and optimization of a complete navigation, localization, and motion control architecture for a physical autonomous vehicle navigating dynamic configuration spaces framework.</p>
             
             <h4>I. Reactive Autonomy & Collision Abatement</h4>
-            <p>Initial efforts centered around low-level safety scripting utilizing a YDLIDAR X4 Pro system[cite: 517, 676]. I contributed to an automatic braking mechanism that dynamically computed a Time-to-Collision (TTC) profile across individual laser tracking channels[cite: 994, 995, 1012]. The system evaluated the scalar forward component of vehicular velocity projected onto the vector of each distinct sensor scan ray using the following dynamic formula[cite: 995, 1013, 1014]:</p>
+            <p>Initial efforts centered around low-level safety scripting utilizing a YDLIDAR X4 Pro system. I contributed to an automatic braking mechanism that dynamically computed a Time-to-Collision (TTC) profile across individual laser tracking channels. The system evaluated the scalar forward component of vehicular velocity projected onto the vector of each distinct sensor scan ray using the following dynamic formula:</p>
             
             <div class="equation-box">
                 $$TTC = \frac{x}{v \cdot \cos(\theta)}$$ 
             </div>
             
-            <p>If any single channel tracking metric dropped past our defined safety bounds, the node published immediate deceleration commands to clear risks[cite: 1019, 1041]. We coupled this with a reactive gap-following routine that applied disparity field extensions and safety indexing bubbles, allowing the vehicle to negotiate narrow corridors and map local escape routes without hitting structures[cite: 996, 1094, 1095].</p>
+            <p>If any single channel tracking metric dropped past our defined safety bounds, the node published immediate deceleration commands to clear risks. We coupled this with a reactive gap-following routine that applied disparity field extensions and safety indexing bubbles, allowing the vehicle to negotiate narrow corridors and map local escape routes without hitting structures.</p>
 
             <h4>II. Probabilistic Localization & Motion Stability</h4>
-            <p>To overcome real-world tracking noise, our team set up a structural Monte Carlo Particle Filter localization engine[cite: 675, 678]. The node maintained an array of hypothetical poses across the environment, tracking lidar scans real-time against an occupancy grid[cite: 689]. By tuning sensor weights and probabilistic motion calculations, the car estimated positions within a 3-4 pixel margin of ground truth tracking[cite: 816, 830, 831]. We tied this position feedback into proportional-derivative (PD), Pure Pursuit, and Stanley control models, empirically tuning system gains ($K_p$, $K_d$) to resolve transient steering oscillations and achieve smooth path tracking[cite: 515, 587, 621, 625].</p>
+            <p>To overcome real-world tracking noise, our team set up a structural Monte Carlo Particle Filter localization engine. The node maintained an array of hypothetical poses across the environment, tracking lidar scans real-time against an occupancy grid. By tuning sensor weights and probabilistic motion calculations, the car estimated positions within a 3-4 pixel margin of ground truth tracking. We tied this position feedback into proportional-derivative (PD), Pure Pursuit, and Stanley control models, empirically tuning system gains ($K_p$, $K_d$) to resolve transient steering oscillations and achieve smooth path tracking.</p>
 
             <h4>III. Path Planning Extensions</h4>
-            <p>The top layer involved calculating trajectories across discrete and continuous spaces using $A^*$ search and Rapidly Exploring Random Trees (RRT) algorithms[cite: 310, 311]. While grid-based $A^*$ yielded consistent trajectories, baseline continuous-space RRT suffered from erratic path selection due to its probabilistic random sampling patterns[cite: 314, 361, 369]. To stabilize convergence rates on physical hardware, I built a real-time ray-casting check into the code loop[cite: 445]. The algorithm evaluated straight-line visibility options between newly appended branches and the absolute goal position[cite: 449]. If the trajectory path was unobstructed by map obstacles, the system bypassed further randomized branching, drawing a line straight to the target and closing the path[cite: 449, 450]. This optimization dramatically minimized runtime and slashed erratic steering behavior[cite: 452, 495].</p>
+            <p>The top layer involved calculating trajectories across discrete and continuous spaces using $A^*$ search and Rapidly Exploring Random Trees (RRT) algorithms. While grid-based $A^*$ yielded consistent trajectories, baseline continuous-space RRT suffered from erratic path selection due to its probabilistic random sampling patterns. To stabilize convergence rates on physical hardware, I built a real-time ray-casting check into the code loop. The algorithm evaluated straight-line visibility options between newly appended branches and the absolute goal position. If the trajectory path was unobstructed by map obstacles, the system bypassed further randomized branching, drawing a line straight to the target and closing the path. This optimization dramatically minimized runtime and slashed erratic steering behavior.</p>
             
             <div class="project-visualization-gallery">
                 <div class="gallery-card">
                     <img src="assets/amr-particle-filter.png" alt="RViz screen capture displaying active particle filter clouds tracking an autonomous vehicle moving around a closed corridor map">
-                    <div class="img-caption">Figure 1: Monte Carlo Particle Filter Cloud Array resolving vehicle localization[cite: 689].</div>
+                    <div class="img-caption">Figure 1: Monte Carlo Particle Filter Cloud Array resolving vehicle localization.</div>
                 </div>
                 <div class="gallery-card">
                     <img src="assets/amr-path-planning.png" alt="RViz environment screen capture detailing the deterministic grid route generated via A* and the random path optimization trees from the optimized RRT script">
-                    <div class="img-caption">Figure 2: Optimized RRT convergence path and $A^*$ trajectory optimization[cite: 311].</div>
+                    <div class="img-caption">Figure 2: Optimized RRT convergence path and $A^*$ trajectory optimization.</div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Trevor Johnson &copy; 2026 | Georgia Tech ECE 1100 ePortfolio [cite: 1, 90, 113]</p>
+        <p>Trevor Johnson &copy; 2026 | Georgia Tech ECE 1100 ePortfolio</p>
     </footer>
 
 </body>
